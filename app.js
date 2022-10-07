@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");// require express
 const https = require("https"); // require ejs
 const mongoose = require('mongoose'); // require mongoose
@@ -10,7 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true}));
 //create new database
-mongoose.connect("mongodb+srv://admin-tina:test123@cluster0.9tch0ws.mongodb.net/todolistDB");
+mongoose.connect(process.env.URL_DB);
 //create the new schema
 const itemsSchema = mongoose.Schema({name: String});
 //create the ITEM model based on the schema (ITEM- the singular version for the ITEMS collection that is goiung to be created)
